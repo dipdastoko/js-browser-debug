@@ -47,6 +47,7 @@ const getCart = () => {
 const addProductToCart = name => {
     const cart = getCart();
     // cart[name] = 1;
+
     if (cart[name]) {
         cart[name] += 1;
     }
