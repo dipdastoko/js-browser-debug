@@ -5,11 +5,15 @@ const loadProduct = () => {
     const name = nameField.value;
     const price = priceField.value;
 
+    if (name === '' || price === '') {
+        return;
+    }
+
     //display product details
     displayProduct(name, price);
 
     //add to cart
-    getCart();
+    addToCart(name, price);
 
     nameField.value = '';
     priceField.value = '';
@@ -37,3 +41,24 @@ const getCart = () => {
     }
     return cartObj;
 }
+
+const addToCart = (name, price) => {
+    const cart = getCart();
+    cart[name] = price;
+    if (cart[name]) {
+        cart[name] = price;
+    }
+    else {
+        cart[name] = price;
+    }
+
+    const cartStringified = JSON.stringify(cart);
+    localStorage.setItem('cart', cartStringified);
+}
+const displayLocalStorage = () => {
+    const cart = getCart();
+    for (const name in cart) {
+        displayProduct(name, cart[name]);
+    }
+}
+displayLocalStorage();
